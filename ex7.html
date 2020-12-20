@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <table>
+    <tr>
+      <td id='0' onClick="hod(0)" class="cell"></td>
+      <td id='1' onClick="hod(1)" class="cell"></td>
+      <td id='2' onClick="hod(2)" class="cell"></td>
+    </tr>
+    <tr>
+      <td id='3' onClick="hod(3)" class="cell"></td>
+      <td id='4' onClick="hod(4)" class="cell"></td>
+      <td id='5' onClick="hod(5)" class="cell"></td>
+    </tr>
+    <tr>
+      <td id='6' onClick="hod(6)" class="cell"></td>
+      <td id='7' onClick="hod(7)" class="cell"></td>
+      <td id='8' onClick="hod(8)" class="cell"></td>
+    </tr>
+  </table>
+  <div>
+    <input type="text" readonly id="message" value="Ваш ход">
+    <input type="button" id="clean" value="Очистить" onClick="clean()">
+  </div>
+  <script>
+  
+  var a = [0,0,0,0,0,0,0,0,0];
+var b=0; //количество ходов игрока
+var td = new Array(0);
+	for (var i=0; i<9; i++){
+  	td[i] = document.getElementById(i);
+  }
+
+function hod(n){
+	if(a[n]==0){
+  	a[n]=1;
+    td[n].innerHTML = 0;
+    b = b + 1;
+  }
+  var k = Math.floor(Math.random() * (8 - 0) + 0);
+  	while ((a[k]!=0)&&(b<5)) {k = Math.floor(Math.random() * (8 - 0) + 0);}
+    if(a[k]==0){
+    a[k]=2;
+    td[k].innerHTML = "×";
+    
+    }
+    if (b>=3){pobeda()}
+}
+
+function pobeda(){
+	if ((a[0]==1)&&(a[1]==1)&&(a[2]==1)||(a[0]==1)&&(a[3]==1)&&(a[6]==1)||(a[0]==1)&&(a[4]==1)&&(a[8]==1)||(a[3]==1)&&(a[4]==1)&&(a[5]==1)||(a[1]==1)&&(a[4]==1)&&(a[7]==1)||(a[2]==1)&&(a[5]==1)&&(a[8]==1)||(a[2]==1)&&(a[4]==1)&&(a[6]==1)||(a[6]==1)&&(a[7]==1)&&(a[8]==1)){
+  alert('Вы победили!')
+  }
+  else{
+  if ((a[0]==2)&&(a[1]==2)&&(a[2]==2)||(a[0]==2)&&(a[3]==2)&&(a[6]==2)||(a[0]==2)&&(a[4]==2)&&(a[8]==2)||(a[3]==2)&&(a[4]==2)&&(a[5]==2)||(a[1]==2)&&(a[4]==2)&&(a[7]==2)||(a[2]==2)&&(a[5]==2)&&(a[8]==2)||(a[2]==2)&&(a[4]==2)&&(a[6]==2)||(a[6]==2)&&(a[7]==2)&&(a[8]==2)){
+  alert('Вы проиграли!')
+  }
+  else {
+  	if(b>4){
+    alert('Ничья:о')
+    }
+  }
+  }
+}
+
+function clean(){
+	for (var i=0; i<9 ; i++){
+  	a[i]=0;
+    b=0;
+    td[i].innerHTML = "";
+  }
+}
+</script>
+</body>
+</html>

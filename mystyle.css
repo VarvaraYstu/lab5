@@ -1,0 +1,35 @@
+table {
+  margin: 40px;
+  border-collapse: collapse;
+}
+
+tr{
+  border: 2px solid black;
+}
+
+td {
+  text-align: center;
+  font-size: 50px;
+  height: 70px;
+  width: 70px;
+  border: 2px solid black;
+}
+
+td:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+div{
+  display: flex;
+  margin-left: 40px;
+}
+#message {
+  cursor: auto;
+  text-align: center;
+  width: 105px;
+}
+#clean {
+  width: 105px;
+  cursor: pointer;
+}

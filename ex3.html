@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript"> 
+			function copy(){
+      	let text1=document.getElementById('text1');
+        if (text1.value!='') {
+         text2.value=text1.value;
+         }
+        else {
+         alert("Введите текст в первое поле");
+          }
+        }
+      function del(){
+        document.getElementById("text1").value = " ";
+        document.getElementById("text2").value = " ";
+         }   
+    </script>
+  </head>
+  <body>
+    <input type="text" id="text1">
+    <input type="text" id="text2">
+    <input type="button" value='Копировать' onclick='copy()'>
+    <input type="button" value='Очистить' onclick='del()'>
+  </body>
+</html>

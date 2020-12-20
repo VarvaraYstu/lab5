@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset="UTF-8">
+<style>
+body{
+  background: pink;
+  height: 7000px;
+}
+#strela {
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 80px;
+  background: white;
+  font-size: 60px;
+  text-align: center;
+}</style>
+</head>
+<body>
+  <p>Начало</p>
+  <div id="strela">↑</div>
+  <script>
+  	var str = document.getElementById("strela");
+    console.dir(document.getElementById("strela").style);
+    window.onscroll = function (){
+      str.style.display = (window.pageYOffset > "100" ? "block" : "none");
+    }
+
+    str.onclick = function (){
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset="UTF-8">
+<style>
+td{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+  <input type="number" placeholder='Количество строк' id='stroka' required  min=1>
+  <input type="number" placeholder='Количество столбцов' id='stolb' required min=1>
+  <input type="button" value='Создать таблицу' onClick='create(div, 3, 3)'>
+  <div id='div'></div>
+  <script>
+    function create() {
+      var str = document.getElementById('stroka').value;
+      var stlb = document.getElementById('stolb').value;
+      var	div = document.getElementById('div');
+
+      for (i = 0; i < str; i++) {
+        var row = document.createElement("tr");
+
+        for (j = 0; j < stlb; j++) {
+          var col = document.createElement("td");
+
+          col.appendChild(document.createTextNode(Math.round(Math.random() * 10)));
+          row.appendChild(col);
+          div.appendChild(row);
+        }
+      }
+	}
+  </script>
+</body>
+</html>

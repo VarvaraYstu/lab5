@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<style>
+table {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  width: 350px;
+  height: 500px;
+  border-spacing: 10px;
+  background: #dbdbdb;
+  border: 2px solid black;
+  border-radius: 2%;
+}
+td {
+   border-radius: 3%;
+   background: grey;
+   color: white;
+   border: 2px;
+}
+input{
+  background: grey;
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  text-align: center;
+  margin: 0px;
+  padding: 0px 10px 0px 10px;
+  border: 1px solid black;
+  border-radius: 2%;
+}
+#textarea {
+  width: 92%;
+}
+</style>
+</head>
+<body>
+<table >
+  <tr>
+    <th colspan="4"><input type="text" id="textarea" readonly value=""></th>
+  </tr>
+  <tr>
+    <td colspan="3" style="background: #1460c4"><input type="button" value='C' style="background: #1460c4" onClick="clean()"></td>
+    <td><input type="button" value='/' onClick="primer('/')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value='7' onClick="primer('7')"></td>
+    <td><input type="button" value='8' onClick="primer('8')"></td>
+    <td><input type="button" value='9' onClick="primer('9')"></td>
+    <td><input type="button" value='×' onClick="primer('*')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value='4' onClick="primer('4')"></td>
+    <td><input type="button" value='5' onClick="primer('5')"></td>
+    <td><input type="button" value='6' onClick="primer('6')"></td>
+    <td><input type="button" value='-' onClick="primer('-')"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value='1' onClick="primer('1')"></td>
+    <td><input type="button" value='2' onClick="primer('2')"></td>
+    <td><input type="button" value='3' onClick="primer('3')"></td>
+    <td><input type="button" value='+' onClick="primer('+')"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><input type="button" value='0' onClick='nol()'></td>
+    <td style="background: #008257"><input type="button" value='=' style="background: #008257" onClick="ravno()"></td>
+  </tr>
+</table>
+
+
+<script>
+	var a='';
+var k=0;
+var operation=0;
+var textarea = document.getElementById('textarea');
+console.log(textarea.value);
+
+function primer(n){
+  if (textarea.value==""){
+  	if (!((n =='+')||(n=='-')||(n=='/')||(n=='*')||(n=='0'))){
+    	textarea.value += n;
+      console.log(textarea.value);
+      k += 1;
+    }
+    else { textarea.value="error" }
+  }
+  
+  else {
+  	if(((n=='+')||(n=='-')||(n=='/')||(n=='*')) && (operation==0)&&(textarea.value!="error")){
+    	textarea.value = textarea.value + n;
+      operation = 1;
+      a = n;
+      console.log(textarea.value);
+      k += 1;
+    }
+    if(!((n=='+')||(n=='-')||(n=='/')||(n=='*')||(textarea.value=="error"))){
+    	textarea.value += n;
+      console.log(textarea.value);
+      k += 1;
+    }
+  }
+}
+
+function clean(){
+	textarea.value ="";
+  operation = 0;
+  k=0;
+}
+
+function nol(){
+  if ((textarea.value!="")&& (textarea.value[k-1]!='/')) {
+  textarea.value = textarea.value + '0';
+  }
+  if ((textarea.value[k-1]=='/')||(textarea.value=='')) {
+  textarea.value='error'
+  }
+}
+
+function ravno(){
+	textarea.value = eval(textarea.value);
+  console.log(textarea.value);
+}
+</script>
+</body>
+</html>
