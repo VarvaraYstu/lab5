@@ -14,12 +14,12 @@ td{
   <input type="number" placeholder='Количество строк' id='stroka' required  min=1>
   <input type="number" placeholder='Количество столбцов' id='stolb' required min=1>
   <input type="button" value='Создать таблицу' onClick='create(div, 3, 3)'>
-  <div id='div'></div>
+  <table id='table'></table>
   <script>
     function create() {
       var str = document.getElementById('stroka').value;
       var stlb = document.getElementById('stolb').value;
-      var	div = document.getElementById('div');
+      var	div = document.getElementById('table');
 
       for (i = 0; i < str; i++) {
         var row = document.createElement("tr");
@@ -29,7 +29,7 @@ td{
 
           col.appendChild(document.createTextNode(Math.round(Math.random() * 10)));
           row.appendChild(col);
-          div.appendChild(row);
+          table.appendChild(row);
         }
       }
 	}
